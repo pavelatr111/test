@@ -2,6 +2,7 @@
 let courses = [
     { name: "Courses in England", prices: [0, 100] },
     { name: "Courses in Germany", prices: [500, null] },
+    { name: "Courses in Italy2", prices: [100, 300] },
     { name: "Courses in Italy", prices: [100, 200] },
     { name: "Courses in Russia", prices: [null, 400] },
     { name: "Courses in China", prices: [50, 250] },
@@ -21,9 +22,10 @@ let courses = [
   
   //фильтрация
   function filtered(arrayCourses, arrayRange) {
-    return arrayCourses.filter(item => {
-      return min(item.prices) <= max(arrayRange) && max(item.prices) >= min(arrayRange)
-    });
+    arrayRange = [min(arrayRange), max(arrayRange)];
+    return arrayCourses.filter(item =>
+      min(item.prices) <= arrayRange[1] && max(item.prices) >= arrayRange[0]
+    )
   }
   
   //Варианты цен (фильтры), которые ищет пользователь
@@ -39,12 +41,10 @@ let courses = [
   //сортировка
   
   function sortedCheap (arrayCourses) {
-    
     return arrayCourses.sort((courseA, courseB) => {
-     return min(courseA.prices) - min(courseB.prices)
+     return min(courseA.prices) - min(courseB.prices) || max(courseA.prices) - max(courseB.prices);
     })
-    
-  
   }
   
+  console.log(sortedCheap(courses));
   console.log(sortedCheap(courses));
