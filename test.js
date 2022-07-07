@@ -22,8 +22,8 @@ let courses = [
   //фильтрация
   function filtered(arrayCourses, arrayRange) {
     return arrayCourses.filter(item => {
-      console.log(min(item.prices) <= max(arrayRange) && max(item.prices) >= min(arrayRange))
-    })
+      return min(item.prices) <= max(arrayRange) && max(item.prices) >= min(arrayRange)
+    });
   }
   
   //Варианты цен (фильтры), которые ищет пользователь
@@ -35,7 +35,6 @@ let courses = [
   console.log(filtered(courses, requiredRange1));
   console.log(filtered(courses, requiredRange2));
   console.log(filtered(courses, requiredRange3));
-  
   
   //сортировка
   
